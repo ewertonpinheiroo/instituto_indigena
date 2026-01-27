@@ -1,7 +1,7 @@
 "use client";
 
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 
 export default function Missao() {
   return (
@@ -12,7 +12,7 @@ export default function Missao() {
           Título da Página
         </h1>
         <p className="text-lg text-[#A8DADC] max-w-4xl mx-auto text-center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+       NOSSA MISSAO - TESTE DE ERRO 
         </p>
         {/* Adicione mais conteúdo, imagens, cards etc. */}
       </main>
