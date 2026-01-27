@@ -12,7 +12,7 @@ export default function QuemSomos() {
           Título da Página
         </h1>
         <p className="text-lg text-[#A8DADC] max-w-4xl mx-auto text-center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          TESTE DE DEPLOY
         </p>
         {/* Adicione mais conteúdo, imagens, cards etc. */}
       </main>
