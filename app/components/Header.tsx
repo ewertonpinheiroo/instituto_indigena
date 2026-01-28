@@ -65,9 +65,9 @@ export function Header() {
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo - Aumentado e sem texto */}
           <Link href="/" className="flex items-center flex-shrink-0 group">
-            <div className="relative w-16 h-16 lg:w-20 lg:h-20 transition-transform group-hover:scale-105 duration-300">
+            <div className="relative w-16 h-16 lg:w-25 lg:h-30 transition-transform group-hover:scale-105 duration-300">
               <Image
-                src="/images/logo.png"
+                src="/images/logo_header.png"
                 alt="IAPOAM - Instituto de Apoio aos Povos Originários da Amazônia"
                 fill
                 className="object-contain"
