@@ -170,7 +170,7 @@ export function Hero() {
               <div className="space-y-5 md:space-y-6">
                 <div className="relative w-full">
                   {/* Logo Banner */}
-                  <div className="relative w-full h-24 sm:h-32 md:h-40 lg:h-48 xl:h-52">
+                  <div className="relative w-full h-24 sm:h-32 md:h-40 lg:h-48 xl:h-75">
                     <Image
                       src="/images/logo_herobanner.png"
                       alt="IAPOAM - Instituto de Apoio aos Povos Originários da Amazônia"
