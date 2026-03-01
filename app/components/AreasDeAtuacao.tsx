@@ -2,11 +2,16 @@
 
 import Link from "next/link";
 
+const iconDefault = (
+  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+);
+
 const areas = [
   {
     id: "cidadania",
     number: "01",
-   
     title: "Cidadania e Inclusão",
     description:
       "Promovemos ações de cidadania e inclusão digital através de doação de computadores e capacitação tecnológica, garantindo que as comunidades indígenas tenham acesso aos seus direitos básicos.",
@@ -17,14 +22,14 @@ const areas = [
       "Inclusão tecnológica comunitária",
     ],
     accent: "from-[#8EBF24] to-[#548C1C]",
-   
+    iconBg: "bg-[#8EBF24]/15",
     iconColor: "text-[#8EBF24]",
     borderAccent: "border-[#8EBF24]/30",
+    icon: iconDefault,
   },
   {
     id: "cultura",
     number: "02",
-   
     title: "Cultura Indígena",
     description:
       "Preservação e promoção das tradições culturais ancestrais, fortalecendo a identidade dos povos originários e garantindo que os saberes e línguas nativas sejam transmitidos às novas gerações.",
@@ -35,14 +40,14 @@ const areas = [
       "Documentação cultural e histórica",
     ],
     accent: "from-[#548C1C] to-[#2E590E]",
-    
+    iconBg: "bg-[#548C1C]/15",
     iconColor: "text-[#8EBF24]",
     borderAccent: "border-[#548C1C]/30",
+    icon: iconDefault,
   },
   {
     id: "ambiente",
     number: "03",
-    
     title: "Meio Ambiente",
     description:
       "Proteção ambiental na Amazônia com foco em desenvolvimento sustentável e conservação da biodiversidade. A floresta em pé é nossa maior riqueza e responsabilidade.",
@@ -53,14 +58,14 @@ const areas = [
       "Conservação da biodiversidade amazônica",
     ],
     accent: "from-[#2E590E] to-[#0C2605]",
-    
+    iconBg: "bg-[#2E590E]/15",
     iconColor: "text-[#8EBF24]",
     borderAccent: "border-[#2E590E]/40",
+    icon: iconDefault,
   },
   {
     id: "habitacao",
     number: "04",
-    
     title: "Habitação",
     description:
       "Apoio para garantir moradias dignas com infraestrutura básica nas comunidades indígenas. Toda família merece um lar seguro, saudável e adequado à sua cultura.",
@@ -71,14 +76,14 @@ const areas = [
       "Construção com materiais sustentáveis",
     ],
     accent: "from-[#8EBF24] to-[#548C1C]",
-  
+    iconBg: "bg-[#8EBF24]/15",
     iconColor: "text-[#8EBF24]",
     borderAccent: "border-[#8EBF24]/30",
+    icon: iconDefault,
   },
   {
     id: "saude",
     number: "05",
-    
     title: "Saúde Indígena",
     description:
       "Assistência médica e prevenção integradas, respeitando e valorizando a medicina tradicional indígena ao lado das práticas modernas de saúde. Cuidamos do corpo e do espírito.",
@@ -89,14 +94,14 @@ const areas = [
       "Valorização dos saberes tradicionais de cura",
     ],
     accent: "from-[#548C1C] to-[#2E590E]",
-   
+    iconBg: "bg-[#548C1C]/15",
     iconColor: "text-[#8EBF24]",
     borderAccent: "border-[#548C1C]/30",
+    icon: iconDefault,
   },
   {
     id: "social",
     number: "06",
-   
     title: "Assistência Social",
     description:
       "Atendimento integral a famílias em vulnerabilidade com programas de apoio comunitário, segurança alimentar e fortalecimento dos laços familiares e da coesão social nas aldeias.",
@@ -107,9 +112,10 @@ const areas = [
       "Desenvolvimento comunitário integrado",
     ],
     accent: "from-[#2E590E] to-[#0C2605]",
-    
+    iconBg: "bg-[#2E590E]/15",
     iconColor: "text-[#8EBF24]",
     borderAccent: "border-[#2E590E]/40",
+    icon: iconDefault,
   },
 ];
 
