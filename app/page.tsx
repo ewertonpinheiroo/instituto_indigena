@@ -1,27 +1,33 @@
-import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { Carousel } from "./components/Carousel";
-import { Institutional } from "./components/Institutional";
-import { OuvidoriaTeaser } from "./components/OuvidoriaTeaser";
-import AreasDeAtuacao from "./components/AreasDeAtuacao";
-import Statistics from "./components/Statistics";
-import DonationCTA from "./components/DonationCTA";
-import { Transparency } from "./components/Transparency";
-import { Footer } from "./components/Footer";
+import { Header } from "@/app/components/Header";
+import { Hero } from "@/app/components/Hero";
+import { InstitutionalBanner } from "@/app/components/InstitutionalBanner";
+import { ProjetosAcoes } from "@/app/components/ProjetosAcoes";
+import { Presidente } from "@/app/components/Presidente";
+import { Equipe } from "@/app/components/Equipe";
+import { Programas } from "@/app/components/Programas";
+import AreasDeAtuacao from "@/app/components/AreasDeAtuacao";
+import DonationCTA from "@/app/components/DonationCTA";
+import { Footer } from "@/app/components/Footer";
+import { NossaLuta } from "./components/NossaLuta";
+import { EstruturaIapoam } from "./components/EstruturaIapoam";
+import { Direitos } from "@/app/components/Direitos";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#010D00]">
       <Header />
       <main>
         <Hero />
-        <Carousel />
-        <Institutional />
-        <OuvidoriaTeaser />
+        <NossaLuta />  
+        <InstitutionalBanner />
+        <ProjetosAcoes />
+        <EstruturaIapoam />
+        <Presidente />
+        <Equipe />
+        <Programas />
+        <Direitos />
         <AreasDeAtuacao />
-        <Statistics />
         <DonationCTA />
-        <Transparency />
       </main>
       <Footer />
     </div>

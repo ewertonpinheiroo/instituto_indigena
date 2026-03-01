@@ -1,404 +1,183 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { motion, Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+
+const stats = [
+  { number: "253", label: "Comunidades Atendidas" },
+  { number: "35+", label: "Etnias Apoiadas" },
+  { number: "16+", label: "Anos de Atuação" },
+  { number: "6",   label: "Áreas de Impacto" },
+];
 
 export function Hero() {
-  // Dados estatísticos principais
-  const mainStats = [
-    { 
-      number: "35+", 
-      label: "Etnias Atendidas",
-      description: "Povos originários em toda Amazônia",
-      color: "from-[#ecf39e] to-[#90a955]"
-    },
-    { 
-      number: "253", 
-      label: "Comunidades",
-      description: "Aldeias e territórios indígenas",
-      color: "from-[#90a955] to-[#4f772d]"
-    },
-    { 
-      number: "29.506", 
-      label: "Indígenas Impactados",
-      description: "Vidas transformadas positivamente",
-      color: "from-[#ecf39e] to-[#c8d99e]"
-    },
-    { 
-      number: "14", 
-      label: "Anos de Atuação",
-      description: "Desde 2011 na linha de frente",
-      color: "from-[#4f772d] to-[#90a955]"
-    },
-  ];
-
-  // Dados adicionais
-  const additionalStats = [
-    {
-      number: "100%",
-      label: "Transparência",
-      description: "Prestação de contas pública e auditada"
-    },
-    {
-      number: "9",
-      label: "Estados",
-      description: "Cobertura na região amazônica"
-    },
-    {
-      number: "50+",
-      label: "Projetos",
-      description: "Iniciativas ativas"
-    },
-    {
-      number: "85%",
-      label: "Equipe Indígena",
-      description: "Liderados por povos originários"
-    }
-  ];
-
-  // Áreas de atuação
-  const institutionalAreas = [
-    {
-      title: "Defesa de Direitos",
-      description: "Proteção jurídica e advocacy"
-    },
-    {
-      title: "Sustentabilidade",
-      description: "Desenvolvimento sustentável"
-    },
-    {
-      title: "Cidadania",
-      description: "Acesso a direitos e políticas"
-    }
-  ];
-
-  const fadeInUp: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.8, 
-        ease: [0.25, 0.1, 0.25, 1]
-      } 
-    }
-  };
-
-  const fadeInLeft: Variants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
-      x: 0, 
-      transition: { 
-        duration: 0.8, 
-        ease: [0.25, 0.1, 0.25, 1]
-      } 
-    }
-  };
-
-  const fadeInRight: Variants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: { 
-      opacity: 1, 
-      x: 0, 
-      transition: { 
-        duration: 0.8, 
-        ease: [0.25, 0.1, 0.25, 1]
-      } 
-    }
-  };
-
-  const fadeInScale: Variants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1]
-      } 
-    }
-  };
-
-  const staggerContainer: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
   return (
-    <section className="relative w-full min-h-screen bg-[#1a1a1a] overflow-hidden pt-20 md:pt-24">
-      
-      {/* --- BACKGROUND LAYER --- */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+
+      {/* ── Background Video ── */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover"
         >
           <source src="/video/bg_video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-[#1a1a1a]/60 to-[#1a1a1a]/80"></div>
-        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-5 mix-blend-overlay"></div>
+
+        {/* Multi-layer overlay — preserves readability while letting video breathe */}
+        {/* Base dark green tint — ties video to brand palette */}
+        <div className="absolute inset-0 bg-[#010D00]/55" />
+        {/* Green brand wash — blends video tones with #8EBF24 identity */}
+        <div className="absolute inset-0 bg-[#2E590E]/30 mix-blend-multiply" />
+        {/* Vignette — darkens edges, keeps center bright for content */}
+        <div className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse at center, transparent 30%, rgba(1,13,0,0.55) 100%)"
+          }}
+        />
+        {/* Bottom fade — smooth transition into the wave */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0C2605] to-transparent" />
       </div>
 
-      {/* --- CONTENT LAYER - GRID HORIZONTAL --- */}
-      <div className="relative z-10 w-full min-h-[calc(100vh-5rem)] md:min-h-[calc(100vh-6rem)]">
-        <div className="h-full grid lg:grid-cols-2 gap-0">
-          
-          {/* ========== COLUNA ESQUERDA: LOGO E IDENTIDADE ========== */}
-          <motion.div 
-            variants={fadeInLeft}
-            initial="hidden"
-            animate="visible"
-            className="relative flex flex-col items-center justify-center px-6 md:px-10 lg:px-16 py-12 md:py-16 lg:py-20 border-r border-white/5"
+      {/* ── Decorative overlay elements ── */}
+      <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+        {/* Subtle dot grid */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dots)" />
+        </svg>
+
+        {/* Soft green glow — top right corner */}
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[#8EBF24]/10 rounded-full blur-[100px]" />
+        {/* Soft green glow — bottom left */}
+        <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] bg-[#548C1C]/10 rounded-full blur-[90px]" />
+
+        {/* Vertical accent lines */}
+        <div className="absolute top-0 right-[22%] w-px h-full bg-gradient-to-b from-transparent via-white/05 to-transparent" />
+        <div className="absolute top-0 left-[22%] w-px h-full bg-gradient-to-b from-transparent via-white/04 to-transparent" />
+      </div>
+
+      {/* ── Content ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-white/10 border border-white/20 rounded-full mb-5 mt-9 backdrop-blur-sm">
+          <div className="w-2 h-2 bg-[#8EBF24] rounded-full animate-pulse" />
+          <span className="text-sm font-semibold text-white/85 tracking-wide">
+            Fundado em 15 de Fevereiro de 2011
+          </span>
+        </div>
+
+        {/* Main heading */}
+        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-6 leading-[1.05] tracking-tight drop-shadow-xl">
+          Defendendo os{" "}
+          <br className="hidden md:block" />
+          <span className="relative inline-block">
+            <span className="text-[#8EBF24]">Povos Originários</span>
+            {/* Underline accent */}
+            <svg
+              className="absolute -bottom-2 left-0 w-full"
+              viewBox="0 0 400 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M2 8 C80 2, 160 10, 240 6 C320 2, 370 9, 398 7"
+                stroke="#8EBF24"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                opacity="0.55"
+              />
+            </svg>
+          </span>
+          <br />
+          <span className="text-white/90">da Amazônia</span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-white/75 max-w-3xl mx-auto mb-10 leading-relaxed font-medium drop-shadow-md">
+          O IAPOAM atua na defesa dos direitos indígenas, preservação da floresta
+          e fortalecimento das comunidades amazônicas há mais de uma década.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
+          <Link
+            href="/quem-somos"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#8EBF24] text-[#010D00] font-black text-base rounded-xl shadow-xl shadow-[#010D00]/40 hover:bg-[#548C1C] hover:text-white hover:shadow-2xl hover:scale-105 active:scale-100 transition-all duration-300"
           >
-            {/* Efeito de glow sutil no background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4f772d]/5 to-transparent"></div>
-            
-            <div className="relative z-10 w-full max-w-2xl space-y-8 md:space-y-10">
-              
-              {/* LOGO - Clean e Profissional */}
-              <div className="space-y-5 md:space-y-6">
-                <div className="relative w-full">
-                  {/* Logo Banner */}
-                  <div className="relative w-full h-24 sm:h-32 md:h-40 lg:h-48 xl:h-75">
-                    <Image
-                      src="/images/logo_herobanner.png"
-                      alt="IAPOAM - Instituto de Apoio aos Povos Originários da Amazônia"
-                      fill
-                      className="object-contain filter brightness-110 drop-shadow-2xl"
-                      priority
-                    />
-                  </div>
-                  
-                  {/* Linha decorativa minimalista */}
-                  <div className="mt-5 md:mt-6 flex items-center gap-4">
-                    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#90a955]/30 to-[#90a955]/30"></div>
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#ecf39e] shadow-lg shadow-[#ecf39e]/50"></div>
-                    <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#90a955]/30 to-[#90a955]/30"></div>
-                  </div>
-                </div>
+            Conheça Nossa Missão
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
 
-                {/* Badge Institucional */}
-                <div className="flex justify-center">
-                  <div className="inline-flex items-center gap-2.5 md:gap-3 px-5 md:px-6 py-2.5 md:py-3 rounded-full bg-white/5 border border-[#90a955]/20 backdrop-blur-sm">
-                    <span className="flex h-2 w-2 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#90a955] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ecf39e]"></span>
-                    </span>
-                    <span className="text-xs md:text-sm font-semibold text-[#ecf39e] tracking-wide uppercase">
-                      Instituto Indígena • Desde 2011
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* MISSÃO - Texto centralizado elegante */}
-              <div className="text-center space-y-4 md:space-y-5">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight px-4">
-                  Nossa <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecf39e] to-[#90a955]">Missão</span>
-                </h1>
-                
-                <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-xl mx-auto px-4">
-                  Promovemos <span className="text-[#ecf39e] font-semibold">cidadania</span>, <span className="text-[#ecf39e] font-semibold">defesa de direitos</span> e <span className="text-[#ecf39e] font-semibold">sustentabilidade</span> para povos indígenas da Amazônia com <span className="text-[#90a955] font-semibold">transparência</span> e <span className="text-[#90a955] font-semibold">autonomia</span>.
-                </p>
-
-                {/* Indicador de transparência */}
-                <div className="inline-flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-[#4f772d]/10 border border-[#ecf39e]/20">
-                  <div className="w-2 h-2 rounded-full bg-[#ecf39e]"></div>
-                  <span className="text-xs md:text-sm text-white/70">
-                    <span className="text-[#ecf39e] font-semibold">Transparência certificada</span> • Prestação de contas pública
-                  </span>
-                </div>
-              </div>
-
-              {/* PILARES - Grid horizontal compacto */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 px-4 sm:px-0">
-                {institutionalAreas.map((area, index) => (
-                  <div 
-                    key={index}
-                    className="group text-center p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#90a955]/40 hover:bg-white/10 transition-all duration-300"
-                  >
-                    <h3 className="text-sm font-bold text-white mb-2">
-                      {area.title}
-                    </h3>
-                    <p className="text-xs text-white/60 leading-relaxed">
-                      {area.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 px-4 sm:px-0">
-                <Link
-                  href="/doacoes"
-                  className="group relative flex-1 px-6 md:px-8 py-3.5 md:py-4 bg-gradient-to-r from-[#4f772d] to-[#90a955] text-white font-bold text-base md:text-lg rounded-full transition-all duration-300 shadow-lg shadow-[#4f772d]/30 hover:shadow-xl hover:shadow-[#4f772d]/50 hover:scale-105 flex items-center justify-center overflow-hidden"
-                >
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
-                  <span className="relative flex items-center gap-2">
-                    Doar Agora
-                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-                
-                <Link
-                  href="/institucional"
-                  className="flex-1 px-6 md:px-8 py-3.5 md:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-[#ecf39e]/60 font-semibold text-base md:text-lg rounded-full backdrop-blur-sm transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                  Saiba Mais
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                </Link>
-              </div>
-
-            </div>
-          </motion.div>
-
-          {/* ========== COLUNA DIREITA: IMPACTO E DADOS ========== */}
-          <motion.div 
-            variants={fadeInRight}
-            initial="hidden"
-            animate="visible"
-            className="relative flex items-center justify-center px-6 md:px-10 lg:px-16 py-12 md:py-16 lg:py-20"
+          <Link
+            href="/doacoes"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/15 text-white font-bold text-base rounded-xl border-2 border-white/30 hover:bg-white/25 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-100 transition-all duration-300 backdrop-blur-sm"
           >
-            {/* Efeito de glow sutil no background */}
-            <div className="absolute inset-0 bg-gradient-to-bl from-[#4f772d]/5 to-transparent"></div>
-            
-            <div className="relative z-10 w-full max-w-2xl space-y-6 md:space-y-8">
-              
-              {/* Header do Impacto */}
-              <div className="text-center space-y-2 px-4">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-                  Nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecf39e] to-[#90a955]">Impacto</span>
-                </h2>
-                <p className="text-white/60 text-xs md:text-sm">
-                  Dados consolidados • 14 anos de atuação dedicada
-                </p>
-              </div>
+            Apoie o Instituto
+          </Link>
+        </div>
 
-              {/* ESTATÍSTICAS PRINCIPAIS - Grid 2x2 - DESTAQUE MÁXIMO */}
-              <motion.div 
-                variants={staggerContainer}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 px-4 sm:px-0"
-              >
-                {mainStats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInScale}
-                    className="group relative"
-                  >
-                    <div className="relative p-5 md:p-6 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-[#90a955]/40 transition-all duration-300 overflow-hidden">
-                      
-                      {/* Glow effect no hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#4f772d]/0 to-[#90a955]/0 group-hover:from-[#4f772d]/10 group-hover:to-[#90a955]/5 transition-all duration-500"></div>
-                      
-                      <div className="relative text-center space-y-2">
-                        {/* Número - MUITO GRANDE */}
-                        <div className={`text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br ${stat.color} group-hover:scale-105 transition-transform duration-300`}>
-                          {stat.number}
-                        </div>
-
-                        {/* Label */}
-                        <div className="text-sm sm:text-base md:text-lg font-bold text-white/95">
-                          {stat.label}
-                        </div>
-
-                        {/* Descrição */}
-                        <div className="text-xs text-white/60 leading-relaxed">
-                          {stat.description}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* ESTATÍSTICAS ADICIONAIS - Grid 4 colunas */}
-              <div className="space-y-4 md:space-y-5 px-4 sm:px-0">
-                <h3 className="text-xl md:text-2xl font-bold text-white text-center">
-                  Dados Complementares
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
-                  {additionalStats.map((stat, index) => (
-                    <div 
-                      key={index}
-                      className="group text-center p-3.5 md:p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#90a955]/40 hover:bg-white/10 transition-all duration-300"
-                    >
-                      <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1.5 md:mb-2 text-transparent bg-clip-text bg-gradient-to-br from-[#ecf39e] to-[#90a955] group-hover:scale-105 transition-transform duration-300">
-                        {stat.number}
-                      </div>
-                      <div className="text-xs md:text-sm font-semibold text-white/90 mb-1">
-                        {stat.label}
-                      </div>
-                      <div className="text-[10px] md:text-xs text-white/60 leading-tight">
-                        {stat.description}
-                      </div>
-                    </div>
-                  ))}
+        {/* ── Impact Stats ── */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 hover:border-white/35 hover:shadow-xl hover:shadow-[#010D00]/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              <div className="relative z-10">
+                <div className="text-3xl md:text-4xl font-black text-white mb-1.5 tracking-tight drop-shadow-md">
+                  {stat.number}
+                </div>
+                <div className="text-sm font-semibold text-white/65 leading-tight">
+                  {stat.label}
                 </div>
               </div>
-
-              {/* LIDERANÇA */}
-              <div className="relative p-5 md:p-6 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm overflow-hidden mx-4 sm:mx-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#4f772d]/5 to-transparent"></div>
-                
-                <div className="relative text-center space-y-2.5 md:space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3.5 md:px-4 py-1.5 md:py-2 rounded-full bg-[#4f772d]/20 border border-[#ecf39e]/30">
-                    <span className="text-[10px] md:text-xs font-semibold text-[#ecf39e] uppercase tracking-wider">
-                      Liderança Indígena
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ecf39e] to-[#90a955]">
-                      Kamila Silva Prestes
-                    </span>
-                  </h3>
-                  
-                  <p className="text-sm md:text-base text-white/90">
-                    Fundadora e Presidente
-                  </p>
-                  
-                  <div className="inline-flex items-center gap-2 px-3.5 md:px-4 py-1.5 md:py-2 rounded-full bg-white/5 border border-white/10">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#90a955]"></div>
-                    <span className="text-[10px] md:text-xs text-white/70">
-                      Etnia Mura • IAPOAM
-                    </span>
-                  </div>
-
-                  <p className="text-xs md:text-sm text-white/60 leading-relaxed max-w-md mx-auto">
-                    Liderança comprometida com a defesa dos direitos territoriais, culturais e sociais dos povos originários da Amazônia.
-                  </p>
-                </div>
-              </div>
-
-              {/* Indicador de Confiança */}
-              <div className="flex items-center justify-center gap-2 md:gap-3 text-white/60 text-[10px] md:text-xs border-t border-white/5 pt-4 md:pt-5 mx-4 sm:mx-0">
-                <div className="w-2 h-2 rounded-full bg-[#90a955]"></div>
-                <span>Organização certificada com <span className="text-[#ecf39e] font-semibold">transparência total</span></span>
-              </div>
-
             </div>
-          </motion.div>
+          ))}
+        </div>
 
+        {/* Trust badges */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-12">
+          {[
+            "Organização Apartidária",
+            "Não Religiosa",
+            "CNPJ: 13.955.659/0001-43",
+          ].map((badge) => (
+            <div
+              key={badge}
+              className="flex items-center gap-2 px-4 py-2 bg-white/08 border border-white/15 rounded-full text-xs font-semibold text-white/55 backdrop-blur-sm"
+            >
+              <div className="w-1.5 h-1.5 bg-[#8EBF24]/70 rounded-full" />
+              {badge}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Custom Animations */}
-      <style jsx global>{`
-        @keyframes shimmer {
-          100% { transform: translateX(100%); }
-        }
-      `}</style>
+      {/* ── Bottom wave transition ── */}
+      <div className="absolute bottom-0 left-0 right-0 z-10">
+        <svg
+          viewBox="0 0 1440 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 80 L0 40 C240 0 480 60 720 40 C960 20 1200 55 1440 35 L1440 80 Z"
+            fill="#0C2605"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
