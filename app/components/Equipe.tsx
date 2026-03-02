@@ -45,13 +45,7 @@ const team = [
     bio: "Eleuza integra a equipe do IAPOAM com dedicação ao fortalecimento das ações sociais e culturais junto às comunidades indígenas. Sua atuação contribui diretamente para a execução dos projetos e para o apoio às famílias atendidas pelo instituto.",
     photo: "/eleuzaequipe.png",
   },
-  {
-    name: "Claudia Kambeba",
-    role: "Bióloga",
-    roleTag: "bg-[#8EBF24]/20 text-[#ffffff] border-[#8EBF24]/40",
-    bio: "Bióloga da etnia Kambeba, Claudia une ciência e conhecimento tradicional no desenvolvimento de projetos ambientais do instituto. Sua expertise contribui para as ações de conservação da biodiversidade amazônica e educação ambiental nas aldeias.",
-    photo: "/claudiaequipe.png",
-  },
+  
 ];
 
 export function Equipe() {
