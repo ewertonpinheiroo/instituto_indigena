@@ -11,8 +11,8 @@ const team = [
     photo: "/kamilaequipe.png",
   },
   {
-    name: "Felipe Hy't ariá Satere Mawe",
-    role: "Diretor Financeiro",
+    name: "Felipe Sateré",
+    role: "Coordenador de Cultura",
     roleTag: "bg-[#548C1C]/15 text-[#ffffff] border-[#548C1C]/35",
     bio: "Pertencente à etnia Sateré-Mawé, Felipe traz ao instituto sua expertise em gestão financeira aliada ao entendimento das necessidades reais das comunidades indígenas. Garante a sustentabilidade econômica dos programas do IAPOAM.",
     photo: "/felipeequipe.png",
